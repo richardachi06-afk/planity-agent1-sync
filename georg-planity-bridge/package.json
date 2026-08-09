@@ -1,0 +1,37 @@
+{
+  "name": "georg-planity-voice-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Retell AI bridge for live Planity availability and guarded salon bookings.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/src/server.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm test",
+    "smoke:live": "tsx src/cli/smoke-live.ts",
+    "probe:planity-auth": "tsx src/cli/probe-planity-auth.ts",
+    "retell:preview": "tsx src/retell/provision.ts",
+    "retell:apply": "tsx src/retell/provision.ts --apply"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.1",
+    "helmet": "^8.3.0",
+    "libphonenumber-js": "^1.13.9",
+    "retell-sdk": "^5.49.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.2",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
